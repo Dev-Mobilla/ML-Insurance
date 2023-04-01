@@ -23,7 +23,7 @@ app.use(helmet());
 app.use(cookieparser());
 
 // app.set("view engine", "ejs");
-app.use(express.static('BUTTONS'));
+app.use(express.static('public'));
 // render the ejs views
 app.set("views", path.join(__dirname, "views"));
 
