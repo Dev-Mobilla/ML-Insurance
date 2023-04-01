@@ -22,7 +22,8 @@ app.use(helmet());
 // allow the app to use cookieparser
 app.use(cookieparser());
 
-app.set("view engine", "ejs");
+// app.set("view engine", "ejs");
+app.use(express.static('BUTTONS'));
 // render the ejs views
 app.set("views", path.join(__dirname, "views"));
 
