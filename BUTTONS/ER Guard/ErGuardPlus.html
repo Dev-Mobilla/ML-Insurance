@@ -33,9 +33,22 @@
 
     <script type="text/javascript">
 
-        function setCookie() {
+//         function setCookie() {
 
-            let er_guard = {
+//             let er_guard = {
+//                 "TypeLogin": "INSURANCE",
+//                 "ProductID": "INS-000002"
+//             }
+            
+//             let json_string = JSON.stringify(er_guard);
+
+//             document.cookie = "data=" + json_string
+            
+//             console.log('cookie')
+//             console.log(document.cookie);
+            
+//         }
+        let er_guard = {
                 "TypeLogin": "INSURANCE",
                 "ProductID": "INS-000002"
             }
@@ -43,10 +56,9 @@
             let json_string = JSON.stringify(er_guard);
 
             document.cookie = "data=" + json_string
-
-            console.log(document.cookie);
             
-        }
+            console.log('cookie')
+            console.log(document.cookie);
         
     </script>
 </body>
