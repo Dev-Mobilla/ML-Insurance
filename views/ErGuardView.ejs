@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ER GUARD</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
         .er-guard-btn{
             background-color: rgba(211,65,63,1);
@@ -27,16 +26,18 @@
     </style>
 </head>
 <body>
-    <!-- <button class="er-guard-btn" onclick="setCookie()">
-        Get ER Guard
-    </button> -->
-    <script type="text/javascript">
 
-        $(document).ready(function() {
+    <button class="er-guard-btn" id="er-guard-plus">
+        Get ER Guard Plus
+    </button>
 
-             let er_guard = {
+    <!-- <script type="text/javascript">
+
+        function setCookie() {
+
+            let er_guard = {
                 "TypeLogin": "INSURANCE",
-                "ProductID": "INS-000001"
+                "ProductID": "INS-000002"
             }
             
             let json_string = JSON.stringify(er_guard);
@@ -44,7 +45,9 @@
             document.cookie = "data=" + json_string
 
             console.log(document.cookie);
-        })
-</script>
+            
+        }
+        
+    </script> -->
 </body>
 </html>
