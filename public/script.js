@@ -1,17 +1,34 @@
-window.onload = function () {
+$(document).ready(function() {
+    console.log('READY!!');
+    
+    // document.getElementById("er-guard-plus").addEventListener("click", setCookie);
+    $('#er-guard-plus').click(setCookie)
 
-    document.getElementById("er-guard-plus").addEventListener("click", setCookie);
+})
 
-}
 function setCookie() {
-    let er_guard = {
-        "ProductID": "INS-000002"
-    }
+    console.log('dsfdg');
 
-    let json_string = JSON.stringify(er_guard);
+    $.ajax({
+        url: "/cookie",
+        type: "GET",
+        // dataType: 'json',
+        success: function(result) {
 
-    document.cookie = "MLInsurance=" + json_string
+            console.log(result);
 
-    console.log('cookie outside')
-    console.log(document.cookie);
+
+            window.location.href = result
+            // let er_guard = {
+            //     "ProductID": "INS-000002"
+            // }
+        
+            // let json_string = JSON.stringify(er_guard);
+        
+            // document.cookie = "MLInsurance=" + json_string
+        
+            // console.log('cookie outside')
+            // console.log(document.cookie);
+        }
+    })
 }
