@@ -11,8 +11,20 @@ module.exports = {
         }
         let json_string = JSON.stringify(er_guard);
 
-        res.cookie('insurance', json_string)
-        res.send('http://127.0.0.1:3000/#/')
+        res.cookie('insurance', json_string, {
+            path: '/',
+            domain: 'mlhuillier.com',
+            // httpOnly: true,
+            secure: true,
+            sameSite: 'none',
+            maxAge: 31536000,
+        })
+        res.header('Access-Control-Allow-Origin', 'https://mlshopdev.mlhuillier.com');
+        res.header('Access-Control-Allow-Credentials', true);
+        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With')
+
+        res.redirect('https://mlshopdev.mlhuillier.com')
+        // res.redirect('http://127.0.0.1:3000/#/')
     },
 
     setErCookie(req, res, next) {
