@@ -36,19 +36,38 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // allow the app to use cookieparser
 app.use(cookieparser(process.env.COOKIE_SECRET));
 
-
-
-// app.set("view engine", "ejs");
-app.use(express.static('public'));
-// render the ejs views
-app.set("views", path.join(__dirname, "views"));
-
 app.use(express.static(path.resolve(__dirname, '../BUTTONS')))
-app.get('/', (req, res) => {
+
+//ER GUARD
+app.get('/er-plus', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'BUTTONS/ER Guard/', 'ErGuardPlus.html'));
 });
+app.get('/er', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'BUTTONS/ER Guard/', 'ErGuard.html'));
+});
 
-app.use('/', ROUTER);
+//MEDICAL REIMBURSEMENT
+app.get('/dengue', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'BUTTONS/Medical Reimbursement/', 'DengueRx.html'));
+});
+
+//PERSONAL ACCIDENT
+app.get('/family-protect', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'BUTTONS/Personal Accident/', 'FamilyProtect.html'));
+});
+app.get('/family-protect-plus', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'BUTTONS/Personal Accident/', 'FamilyProtectPlus.html'));
+});
+app.get('/pinoy-protect-plus', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'BUTTONS/Personal Accident/', 'PinoyProtectPlus.html'));
+});
+
+//VIRTUAL INSURANCE
+app.get('/mediphone', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'BUTTONS/Virtual Insurance/', 'Mediphone.html'));
+});
+
+app.use('/api', ROUTER);
 
 app.listen(PORT, () => {
     console.log(`SERVER LISTENING ON PORT ${PORT}`);

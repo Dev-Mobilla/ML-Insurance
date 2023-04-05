@@ -36,7 +36,28 @@
         Get ER Guard Plus
     </button>
     
-    <!-- <script src="../../public/script.js"></script> -->
-    <!-- <script src="script.js"></script> -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            console.log('READY!!');
+            
+            $('#er-guard-plus').click(setCookie)
+
+        })
+
+        function setCookie() {
+
+            $.ajax({
+                url: "/api/er-guard-plus",
+                type: "GET",
+                // dataType: 'json',
+                success: function(result) {
+
+                    // window.open(result, '_blank')
+                    location.replace(result)
+
+                }
+            })
+        }
+    </script>
 </body>
 </html>

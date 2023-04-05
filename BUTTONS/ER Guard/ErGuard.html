@@ -27,24 +27,31 @@
     </style>
 </head>
 <body>
-    <button class="er-guard-btn" onclick="setCookie()">
+    <button class="er-guard-btn" id="er-guard">
         Get ER Guard
     </button>
-    <!-- <script type="text/javascript">
-
+    <script type="text/javascript">
         $(document).ready(function() {
-
-             let er_guard = {
-                "TypeLogin": "INSURANCE",
-                "ProductID": "INS-000001"
-            }
+            console.log('READY!!');
             
-            let json_string = JSON.stringify(er_guard);
+            $('#er-guard').click(setCookie)
 
-            document.cookie = "data=" + json_string
-
-            console.log(document.cookie);
         })
-</script> -->
+
+        function setCookie() {
+
+            $.ajax({
+                url: "/api/er-guard",
+                type: "GET",
+                // dataType: 'json',
+                success: function(result) {
+
+                    // window.open(result, '_blank')
+                    location.replace(result)
+
+                }
+            })
+        }
+    </script>
 </body>
 </html>
