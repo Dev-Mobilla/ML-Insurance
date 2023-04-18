@@ -51,10 +51,10 @@
                 type: "GET",
                 // dataType: 'json',
                 success: function(result) {
-
+                    console.log(result);
                     // window.open(result, '_blank')
-                    location.replace(result)
-
+                    document.cookie = 'insurance=' + result.cookie
+                    window.open(result.url)
                 }
             })
         }

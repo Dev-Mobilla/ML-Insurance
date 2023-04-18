@@ -8,10 +8,17 @@ const cookieparser = require('cookie-parser');
 const path = require('path');
 const helmet = require('helmet');
 const cors = require('cors');
+const https = require("https");
+const fs = require("fs");
 
 const ROUTER = require('./router/routes');
 
 const PORT = process.env.PORT || 4000
+
+const options = {
+    key: fs.readFileSync("./config/cert.key"),
+    cert: fs.readFileSync("./config/cert.crt"),
+};
 
 const app = express();
 
@@ -19,6 +26,14 @@ app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// app.use(function (req, res, next) {
+//     console.log(req);
+//     res.header('Access-Control-Allow-Credentials', true);
+//     res.header('Access-Control-Allow-Origin', req.headers);
+//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,UPDATE,OPTIONS');
+//     res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+//     next();
+// });
 
 
 // allow the app to use cookieparser
@@ -67,8 +82,14 @@ app.get('/mediphone', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'BUTTONS/Virtual Insurance/', 'Mediphone.html'));
 });
 
-app.use('/api', ROUTER);
+app.use('/api/', ROUTER);
 
 app.listen(PORT, () => {
     console.log(`SERVER LISTENING ON PORT ${PORT}`);
 })
+
+// https.createServer(options, app).listen(8000, () => {
+
+//     console.log(`HTTPS server started on port 6000`);
+// })
+
